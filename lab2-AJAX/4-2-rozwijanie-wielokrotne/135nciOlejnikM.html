@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+  <head>
+    <title>Ajax. Kurs od podstaw. Część pierwsza: Wprowadzenie. Przykład #4.2</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <style type="text/css">
+    .tresc {
+        width: 300px;
+        border: 1px solid black;
+        padding: 10px;
+        background: #e8fff1;        
+        margin: 10px;
+    }
+    .minitresc {
+        display: none;
+        padding: 5px;
+    }
+    a {
+        width: 20px;
+        font-family: "Courier New", monospace;
+        text-decoration: none;
+    }
+    </style>
+    
+<script type="text/javascript">
+
+function expandCollapse(Id)
+{
+    var n = Id.parentNode.childNodes[2];
+    if (n.style.display == 'block') {
+        n.style.display = 'none';        
+        Id.innerHTML = '+';
+    } else {
+        n.style.display = 'block';                
+        n.innerHTML = 'Lubię to!';
+        Id.innerHTML = '-';        
+    }
+}
+
+</script>    
+    
+    
+  </head>
+<body>
+
+<div class="tresc"><a href="#" onclick="expandCollapse(this);">+</a><span>Nazywam się Michał Olejnik.</span><div></div></div>
+<div class="tresc"><a href="#" onclick="expandCollapse(this);">+</a><span>Studiuję na Akademii Marynarki Wojennej w Gdynii.</span><div></div></div>
+<div class="tresc"><a href="#" onclick="expandCollapse(this);">+</a><span>Studiuję na kierunku informatyka.</span><div></div></div>
+<div class="tresc"><a href="#" onclick="expandCollapse(this);">+</a><span>Mieszkam w Gdańsku na przymorzu.</span><div></div></div>
+<div class="tresc"><a href="#" onclick="expandCollapse(this);">+</a><span>Lubię grać w siatkówkę.</span><div></div></div>
+<div class="tresc"><a href="#" onclick="expandCollapse(this);">+</a><span>Na turniejach petanque reprezentuję Klub Petanki Ciechan Ciechanów.</span><div></div></div>
+<div class="tresc"><a href="#" onclick="expandCollapse(this);">+</a><span>Jestem dosyć leniwy i uparty.</span><div></div></div>
+<div class="tresc"><a href="#" onclick="expandCollapse(this);">+</a><span>Mam młodszego brata o 5 lat.</span><div></div></div>
+<div class="tresc"><a href="#" onclick="expandCollapse(this);">+</a><span>W domu mam zwierzęta takie jak: ryby, krewetki oraz tchórzofretka.</span><div></div></div>
+
+</body>
+</html>

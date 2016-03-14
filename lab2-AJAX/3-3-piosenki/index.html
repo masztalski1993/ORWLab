@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+  <head>
+    <title>Ajax. Kurs od podstaw. Część pierwsza: Wprowadzenie. Przykład #3.3</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+    #pojemnik {
+        margin: 20px auto;
+        width: 960px;
+    }
+    #menu {
+        width: 300px;
+        float: left;
+    }
+    #tresc {
+        width: 600px;
+        float: left;    
+        white-space: pre;
+    }
+    
+    </style>
+    
+    <script type="text/javascript">
+    
+    
+function getXMLHttpRequest()
+{
+    var request = false;
+    
+    try {
+        /*
+	 * Przeglądarki: Firefox 2, Opera 9, IE 7
+	 */
+        request = new XMLHttpRequest();
+    } catch(err1) {
+        try {
+            /*
+             * Przeglądarka: IE 6
+             */
+            request = new ActiveXObject('Msxml2.XMLHTTP');
+        } catch(err2) {
+            try {
+                /*
+                 * Przeglądarka: IE 5
+                 */
+                request = new ActiveXObject('Microsoft.XMLHTTP');                
+            } catch(err3) {
+                request = false;
+            }
+        }
+    }
+    return request;
+}    
+
+var r;
+
+r = getXMLHttpRequest();    
+
+
+function processResponse()
+{
+    if (r.readyState == 4) {
+        if (r.status == 200) {
+            document.getElementById('tresc').innerHTML = 
+                r.responseXML.getElementsByTagName('tekst')[0].childNodes[0].nodeValue;	        
+                
+            document.getElementById('tresc').style.background = '#e3f5fb';
+        };
+    }
+}
+
+
+function getText(Dane)
+{
+    r.open('GET', Dane, true);
+    r.onreadystatechange = processResponse;
+    r.send(null);
+}
+
+
+function wyczyscDane()
+{
+    document.getElementById('tresc').innerHTML = 'Witaj na stronie z piosenkami...';
+    document.getElementById('tresc').style.background = 'white';
+}
+
+        
+    </script>
+    
+  </head>
+<body>
+
+<div id="pojemnik">
+    <ul id="menu">
+      <li><a href='#' onmouseover="getText('dane/lisekOM.xml');" onmouseout="wyczyscDane();">Chodzi lisek koło drogi</a></li>
+      <li><a href='#' onmouseover="getText('dane/misieOM.xml');" onmouseout="wyczyscDane();">Jadą, jadą misie</a></li>                  
+      <li><a href='#' onmouseover="getText('dane/krasnoludkiOM.xml');" onmouseout="wyczyscDane();">Krasnoludki</a></li>      
+    </ul>
+
+    <p id="tresc">Witaj na stronie z piosenkami...</p>
+</div>
+
+</body>
+</html>

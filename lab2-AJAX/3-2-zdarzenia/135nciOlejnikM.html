@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+  <head>
+    <title>Ajax. Kurs od podstaw. Część pierwsza: Wprowadzenie. Przykład #3.2</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+    li {
+        padding: 5px;
+        border: 1px solid black;
+        width: 300px;
+        margin: 5px;
+    }
+    </style>
+    
+
+<script type="text/javascript">
+
+function onclickHandler()
+{
+    var el;
+    el = document.getElementById('tresc');
+    el.innerHTML = '135NCIOlejnikM';
+    el.style.border = '2px solid red';
+    el.style.background = '#fef4e0';
+}    
+
+function onmouseoverHandler()
+{
+    var el;
+    el = document.getElementById('tresc');
+    el.innerHTML = '135NCIOlejnikM';
+    el.style.border = '2px solid green';
+    el.style.background = '#d8fee6';
+}    
+
+function onmouseoutHandler()
+{
+    var el;
+    el = document.getElementById('tresc');
+    el.innerHTML = '135NCIOlejnikM';
+    el.style.border = '2px solid blue';
+    el.style.background = '#d6edfe';
+}    
+
+</script>    
+
+    
+  </head>
+<body>
+
+<ul>
+<li onclick="onclickHandler();">onclick</li>
+<li onmouseover="onmouseoverHandler();">onmouseover</li>
+<li onmouseout="onmouseoutHandler();">onmouseout</li>
+</ul>
+
+<div id="tresc">135NCIOlejnikM</div>
+
+</body>
+</html>
+

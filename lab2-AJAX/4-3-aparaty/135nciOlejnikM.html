@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+  <head>
+    <title>Ajax. Kurs od podstaw. Część pierwsza: Wprowadzenie. Przykład #4.3</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <style type="text/css">
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: small;
+    }
+    h3 {
+        font-size: 90%;
+        margin: 0;
+        padding: 0;
+    }
+    .tresc {
+        width: 300px;
+        border: 1px solid black;
+        padding: 10px;
+        background: #e8fff1;        
+        margin: 10px;
+    }
+    .tresc div {
+        display: none;
+        padding: 5px;
+        margin-left: 40px;
+        font-size: 80%;        
+    }
+    .tresc a {
+        width: 20px;
+        font-family: "Courier New", monospace;
+        text-decoration: none;
+    }
+    </style>
+    
+<script type="text/javascript">
+
+function getXMLHttpRequest()
+{
+    var request = false;
+    
+    try {
+        /*
+	 * Przeglądarki: Firefox 2, Opera 9, IE 7
+	 */
+        request = new XMLHttpRequest();
+    } catch(err1) {
+        try {
+            /*
+             * Przeglądarka: IE 6
+             */
+            request = new ActiveXObject('Msxml2.XMLHTTP');
+        } catch(err2) {
+            try {
+                /*
+                 * Przeglądarka: IE 5
+                 */
+                request = new ActiveXObject('Microsoft.XMLHTTP');                
+            } catch(err3) {
+                request = false;
+            }
+        }
+    }
+    return request;
+}    
+
+var r;
+
+r = getXMLHttpRequest();    
+
+
+var opis= new Array(5);
+opis[0]  = 'Kraj_pochodzenia:';
+opis[1]  = 'Drzewo:';
+opis[2]  = 'Kształt';
+opis[3]  = 'Słodkie:';
+opis[4]  = 'Pestki:';
+
+
+var element;
+
+function processResponse()
+{
+    if (r.readyState == 4) {
+        if (r.status == 200) {
+        
+            var x = r.responseXML.getElementsByTagName('owocemo')[0].childNodes;            
+
+            var tmp = '';
+            
+            for (i = 0; i < x.length; i++) {
+                tmp = tmp
+		    + '<strong>' + opis[i] + ':</strong> '
+		    + x[i].childNodes[0].nodeValue
+		    + '<br />';
+            }
+            
+            element.innerHTML = tmp;
+        };
+    }
+}
+
+
+function expandCollapse(Id, Numer)
+{
+    element = Id.parentNode.parentNode.childNodes[1];
+    if (element.style.display == 'block') {
+        element.style.display = 'none';        
+        Id.innerHTML = '+';
+    } else {
+        element.style.display = 'block';                
+        Id.innerHTML = '-';                
+        
+        r.open('GET', 'dane-xml/' + Numer + '.xml', true);
+        r.onreadystatechange = processResponse;
+        r.send(null);        
+    }
+}   
+
+</script>
+
+    
+  </head>
+<body>
+
+<div class="tresc"><h3><a href="#" onclick="expandCollapse(this, 1);">+</a> Jabłko</h3><div></div></div>
+
+<div class="tresc"><h3><a href="#" onclick="expandCollapse(this, 2);">+</a> Pomarańcza</h3><div></div></div>
+
+<div class="tresc"><h3><a href="#" onclick="expandCollapse(this, 3);">+</a> Gruszka</h3><div></div></div>
+
+<div class="tresc"><h3><a href="#" onclick="expandCollapse(this, 4);">+</a> Kiwi</h3><div></div></div>
+
+<div class="tresc"><h3><a href="#" onclick="expandCollapse(this, 5);">+</a> Granat</h3><div></div></div>
+
+
+</body>
+</html>

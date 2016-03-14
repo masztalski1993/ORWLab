@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+  <head>
+    <title>Ajax. Kurs od podstaw. Część pierwsza: Wprowadzenie. Przykład #1</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+<script type="text/javascript">
+    
+function getXMLHttpRequest()
+{
+    var request = false;
+    
+    try {
+        /*
+	 * Przeglądarki: Firefox 2, Opera 9, IE 7
+	 */
+        request = new XMLHttpRequest();
+        alert('OK: XMLHttpRequest');
+	alert('135nciOlejnikM')        
+    } catch(err1) {
+        alert(err1.description);            
+        try {
+            /*
+             * Przeglądarka: IE 6
+             */
+            request = new ActiveXObject('Msxml2.XMLHTTP');
+            alert('OK: Msxml2.XMLHTTP');
+			alert('135nciOlejnikM')
+        } catch(err2) {
+            alert(err2.description);        
+            try {
+                /*
+                 * Przeglądarka: IE 5
+                 */
+                request = new ActiveXObject('Microsoft.XMLHTTP');                
+                alert('OK: Microsoft.XMLHTTP');
+				alert('135nciOlejnikM')
+            } catch(err3) {
+                alert(err3.description);                    
+                request = false;
+            }
+        }
+    }
+    return request;
+}    
+
+var r;
+
+r = getXMLHttpRequest();    
+      
+</script>
+    
+  </head>
+<body>
+
+</body>
+</html>
